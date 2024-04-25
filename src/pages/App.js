@@ -15,7 +15,11 @@ function App() {
     <div className="App">
       <Menu />
       <Container fluid="xxl" >
-        <Button id='buttonFloat' variant="primary" onClick={() => setModalShow(true)}>
+        <Button id='buttonFloat' className=' d-sm-block d-md-none shadow-lg btn-sm' variant="primary" onClick={() => setModalShow(true)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+            <title>plus</title>
+            <g fill="#FFFFFF"><path d="M14.75,9.75H3.25c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75H14.75c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#FFFFFF"></path><path d="M9,15.5c-.414,0-.75-.336-.75-.75V3.25c0-.414,.336-.75,.75-.75s.75,.336,.75,.75V14.75c0,.414-.336,.75-.75,.75Z" fill="#FFFFFF"></path></g>
+          </svg>
           Agregar Objetivo
         </Button>
         <Modal
@@ -35,7 +39,7 @@ function App() {
           </Modal.Body>
         </Modal>
         <Row>
-          <Col sm={true} >
+          <Col sm={true} className='d-none d-sm-none d-md-block' >
             <Formulario />
           </Col>
           <Col>

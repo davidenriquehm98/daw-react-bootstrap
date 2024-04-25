@@ -24,7 +24,8 @@ function Item() {
           01/05/2024
         </Card.Text>
         <div className='cardActions' >
-          <Button variant="info">Eliminar</Button>
+          <Button className='mx-2 my-1' variant="info">Editar</Button>
+          <Button className='mx-2 my-1' variant="info">Eliminar</Button>
         </div>
       </Card.Body>
     </Card>

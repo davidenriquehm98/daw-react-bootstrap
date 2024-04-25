@@ -21,6 +21,15 @@ $secondary: #7717bb;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardActions button {
+  width: 6rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .itemLabel{
