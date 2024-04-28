@@ -1,31 +1,38 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './../styles/item.scss';
-function Item() {
+function Item(props) {
+  const {
+    data = {},
+    type = 'goal',
+    onEdit = () => {},
+    onDelete = () => {}
+  } = props
+
   return (
-    <Card>
+    <Card className={` card-${type} `} >
       <Card.Body>
         <Card.Text className='itemLabel'>
           Nombre
         </Card.Text>
         <Card.Text>
-          Realizar Proyecto
+          { data.name }
         </Card.Text>
         <Card.Text className='itemLabel'>
           Descripción
         </Card.Text>
         <Card.Text>
-          Elaborar proyecto del curso de DAW.
+          { data.description }
         </Card.Text>
         <Card.Text className='itemLabel'>
           Fecha de Vencimiento
         </Card.Text>
         <Card.Text>
-          01/05/2024
+          { data.due_date }
         </Card.Text>
         <div className='cardActions' >
-          <Button className='mx-2 my-1' variant="info">Editar</Button>
-          <Button className='mx-2 my-1' variant="info">Eliminar</Button>
+          <Button className='mx-2 my-1' variant="info" onClick={() => { onEdit(data) }} >Editar</Button>
+          <Button className='mx-2 my-1' variant="info" onClick={() => { onDelete(data) }} >Eliminar</Button>
         </div>
       </Card.Body>
     </Card>

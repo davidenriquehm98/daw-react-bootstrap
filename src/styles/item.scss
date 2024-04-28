@@ -1,5 +1,6 @@
 $primary: #e0ffe8;
 $secondary: #7717bb;
+$task: #fffce0;
 
 .card {
   background-color: $primary;
@@ -9,6 +10,11 @@ $secondary: #7717bb;
   flex-direction: column;
   border: solid 2px rgb(102, 184, 91);
   border-radius: 25px;
+}
+
+.card.card-task {
+  background-color: $task;
+  border: solid 2px rgb(184, 155, 91);
 }
 
 .btn-info {

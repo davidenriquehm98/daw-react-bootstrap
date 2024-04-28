@@ -7,10 +7,34 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { removeGoal } from '../reducers/goals'
+import { removeTask } from '../reducers/tasks'
+import './../styles/app.scss';
 
 function App() {
+  const globalMode = useSelector((state) => state.globalMode.value)
+  const goals = useSelector((state) => state.goals.value)
+  const tasks = useSelector((state) => state.tasks.value)
   const [modalShow, setModalShow] = React.useState(false);
+  const dispatch = useDispatch()
+
+  const deleteItem = (item) => {
+    if (item.type === 'task') {
+      const indexItem = tasks.indexOf(item)
+      if (indexItem >= 0) {
+        dispatch(removeTask(indexItem))
+      }
+    }
+    if (item.type === 'goal') {
+      const indexItem = goals.indexOf(item)
+      if (indexItem >= 0) {
+        dispatch(removeGoal(indexItem))
+      }
+    }
+  }
+
   return (
     <div className="App">
       <Menu />
@@ -43,10 +67,14 @@ function App() {
             <Formulario />
           </Col>
           <Col>
-            <Item />
-            <Item />
-            <Item />
-            <Item />
+            <div className='scrolling' >
+              { globalMode === 'tasks' && tasks.map((task, idx) => {
+                return (<Item key={idx} type='task' data={task} onDelete={deleteItem} />)
+              }) }
+              {  globalMode === 'goals' && goals.map((goal, idx) => {
+                return (<Item key={idx} type='goal' data={goal} onDelete={deleteItem} />)
+              }) }
+            </div>
           </Col>
         </Row>
       </Container>

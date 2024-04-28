@@ -1,0 +1,24 @@
+
+.opc-menu {
+  display: flex;
+}
+
+.opc-menu div.count {
+  border-radius: 100%;
+  padding: 0 0.5rem;
+  font-weight: bolder;
+  margin: 0 0.25rem;
+  background-color: rgb(53, 70, 228);
+  color: #FFF;
+}
+
+.opc-menu.opc-menu--active {
+  border-radius: 25px;
+  background-color: rgb(53, 70, 228);
+  color: #FFF !important;
+}
+
+.opc-menu.opc-menu--active div.count {
+  color: black;
+  background-color: #FFF;
+}
