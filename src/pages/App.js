@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { removeGoal } from '../reducers/goals'
 import { removeTask } from '../reducers/tasks'
+// import TarjetaPresentacion from '../components/TarjetaPresentacion';
 import './../styles/app.scss';
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
             <title>plus</title>
             <g fill="#FFFFFF"><path d="M14.75,9.75H3.25c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75H14.75c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#FFFFFF"></path><path d="M9,15.5c-.414,0-.75-.336-.75-.75V3.25c0-.414,.336-.75,.75-.75s.75,.336,.75,.75V14.75c0,.414-.336,.75-.75,.75Z" fill="#FFFFFF"></path></g>
           </svg>
-          Agregar Objetivo
+          Agregar { globalMode === 'tasks' ? 'Tarea' : 'Objetivo' }
         </Button>
         <Modal
           show={modalShow}
@@ -55,7 +56,7 @@ function App() {
         >
           <Modal.Header closeButton>
             <span className='item-label' >
-              Agregar Objetivo
+              Agregar { globalMode === 'tasks' ? 'Tarea' : 'Objetivo' }
             </span>
           </Modal.Header>
           <Modal.Body>
@@ -77,6 +78,7 @@ function App() {
             </div>
           </Col>
         </Row>
+        {/* <TarjetaPresentacion></TarjetaPresentacion> */}
       </Container>
     </div>
   );

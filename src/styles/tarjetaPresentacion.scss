@@ -1,0 +1,25 @@
+
+.card {
+  background-color:  #33FCFF;
+  margin-top: 15px;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  border: solid 2px #338bff;
+  border-radius: 25px;
+}
+
+.titleLabel {
+  font-size: large;
+}
+
+.itemLabel{
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.list-group-item{
+  background-color: #ffffff7a;
+  border: solid 1px #338bff;
+  border-width: 0 0 1px 0;
+}
