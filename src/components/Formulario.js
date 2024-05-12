@@ -7,7 +7,7 @@ import { addGoal } from '../reducers/goals'
 import { addTask } from '../reducers/tasks'
 import { useRef } from 'react'
 
-function Formulario() {
+function Formulario({ initFetch = () => {} }) {
 
   const globalMode = useSelector((state) => state.globalMode.value)
   const tasks = useSelector((state) => state.tasks.value)
@@ -58,6 +58,10 @@ function Formulario() {
     inputRefName.current.value = ""
     inputRefDescription.current.value = ""
     inputRefDueDate.current.value = ""
+
+    setTimeout(() => {
+      initFetch()
+    }, 1000)
   }
 
   return (

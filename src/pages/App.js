@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Item from './../components/Item';
 import Formulario from './../components/Formulario';
 import Menu from './../components/Menu';
@@ -9,8 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { removeGoal } from '../reducers/goals'
-import { removeTask } from '../reducers/tasks'
+import { removeGoal, setAllGoals } from '../reducers/goals'
+import { removeTask, setAllTasks } from '../reducers/tasks'
 // import TarjetaPresentacion from '../components/TarjetaPresentacion';
 import './../styles/app.scss';
 
@@ -23,18 +23,48 @@ function App() {
 
   const deleteItem = (item) => {
     if (item.type === 'task') {
-      const indexItem = tasks.indexOf(item)
-      if (indexItem >= 0) {
-        dispatch(removeTask(indexItem))
-      }
+      dispatch(removeTask(item.id))
     }
     if (item.type === 'goal') {
-      const indexItem = goals.indexOf(item)
-      if (indexItem >= 0) {
-        dispatch(removeGoal(indexItem))
+      dispatch(removeGoal(item.id))
+    }
+    setTimeout(() => {
+      initFetch()
+    }, 1000)
+  }
+
+  const initFetch = async () => {
+    try {
+      const responseTasks = await fetch('http://localhost:3001/tasks/getTasks', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'af973f61e9ade61a13287b32eaed5c52'
+        }
+      })
+      if (responseTasks != null) {
+        const resJson = await responseTasks.json()
+        dispatch(setAllTasks(resJson))
       }
+      const responseGoals = await fetch('http://localhost:3001/goals/getGoals', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'af973f61e9ade61a13287b32eaed5c52'
+        }
+      })
+      if (responseGoals != null) {
+        const resJson = await responseGoals.json()
+        dispatch(setAllGoals(resJson))
+      }
+    } catch (error) {
+      console.error(error)
     }
   }
+  
+  useEffect(() => {
+    initFetch()
+  }, [])
 
   return (
     <div className="App">
@@ -60,12 +90,12 @@ function App() {
             </span>
           </Modal.Header>
           <Modal.Body>
-            <Formulario />
+            <Formulario initFetch={initFetch} />
           </Modal.Body>
         </Modal>
         <Row>
           <Col sm={true} className='d-none d-sm-none d-md-block' >
-            <Formulario />
+            <Formulario initFetch={initFetch} />
           </Col>
           <Col>
             <div className='scrolling' >
