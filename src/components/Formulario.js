@@ -35,9 +35,9 @@ function Formulario({ initFetch = () => {} }) {
   const addItem = (e) => {
     e.preventDefault()
     if (globalMode === 'tasks') {
-      let nextId = getNextId('task_', tasks)
+      // let nextId = getNextId('task_', tasks)
       dispatch(addTask({
-        id: nextId,
+        // id: nextId,
         type: 'task',
         name: inputRefName.current.value,
         description: inputRefDescription.current.value,
@@ -45,9 +45,9 @@ function Formulario({ initFetch = () => {} }) {
       }))
     }
     if (globalMode === 'goals') {
-      let nextId = getNextId('goal_', goals)
+      // let nextId = getNextId('goal_', goals)
       dispatch(addGoal({
-        id: nextId,
+        // id: nextId,
         type: 'goal',
         name: inputRefName.current.value,
         description: inputRefDescription.current.value,

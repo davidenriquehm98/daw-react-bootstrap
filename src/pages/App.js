@@ -23,10 +23,10 @@ function App() {
 
   const deleteItem = (item) => {
     if (item.type === 'task') {
-      dispatch(removeTask(item.id))
+      dispatch(removeTask(item._id))
     }
     if (item.type === 'goal') {
-      dispatch(removeGoal(item.id))
+      dispatch(removeGoal(item._id))
     }
     setTimeout(() => {
       initFetch()
