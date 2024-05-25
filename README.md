@@ -1,4 +1,4 @@
-# Comenzar con la aplicación Crear React
+# Comenzar con la aplicación To do List
 
 Este proyecto fue arrancado con [Create React App](https://github.com/facebook/create-react-app).
 
