@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "buildImage" : "docker build -t docker-react-image:1.0 .",
+    "runImage" : "docker run -p 4000:80 --name docker-react-container docker-react-image:1.0"
   },
   "eslintConfig": {
     "extends": [
